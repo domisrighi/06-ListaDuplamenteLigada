@@ -11,6 +11,7 @@ struct NO {
 NO* primeiro = NULL;
 NO* ultimo = NULL;
 
+
 // headers
 void menu();
 void inicializar();
@@ -103,8 +104,8 @@ void exibirQuantidadeElementos() {
 
 }
 
-void exibirElementos()
-{
+void exibirElementos() {
+	
 	if (primeiro == NULL) {
 		cout << "Lista vazia \n";
 		return;
@@ -119,8 +120,9 @@ void exibirElementos()
 	}
 }
 
-void inserirElemento()
-{
+
+void inserirElemento() {
+	
 	// aloca memoria dinamicamente para o novo elemento
 	NO* novo = (NO*)malloc(sizeof(NO));
 	if (novo == NULL)
@@ -147,24 +149,48 @@ void inserirElemento()
 }
 
 
-// funções a serem implementadas no exericio
-void exibirReverso()
-{
+// funções a serem implementadas no exercicio
 
+void exibirReverso() {
+	
+	if (ultimo == NULL) {
+		cout << "Lista vazia \n";
+		return;
+	}
+	else {
+		cout << "Elementos: \n";
+		NO* aux = ultimo;
+		while (aux != NULL) {
+			cout << aux->valor << endl;
+			aux =  aux->ant;
+		}
+	}
 }
 
-void excluirPrimeiroElemento()
-{
+void excluirPrimeiroElemento() {
+	
+	NO* posEle = ultimo;
+		if (posEle == NULL) {
+			cout << "Lista está Vazia" << endl;
+		}
+	NO* elemSeg = primeiro->prox;
+	primeiro = elemSeg;
 
+	free(elemSeg->ant);
+	elemSeg->ant = NULL;
 }
 
-void excluirUltimoElemento()
-{
 
+void excluirUltimoElemento() {
+	
+	NO* posEle = ultimo;
+		if (posEle == NULL) {
+			cout << "Lista está Vazia" << endl;
+		}
+		else {
+			NO* aux = ultimo;
+			ultimo = aux->ant;
+			ultimo->prox = NULL;
+			free(aux);
+		}
 }
-
-
-
-
-
-
